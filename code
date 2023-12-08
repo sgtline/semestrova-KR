@@ -1,18 +1,21 @@
-def main_task(file, limit):
+def main_task(file, limit): #створюємо функцію 
     try:
-        with open(file, 'r') as file:
-            lines = file.readlines()
+        with open(file, 'r') as file: #відкриваємо наш файл у режимі читання
+            lines = file.readlines() #повертаємо наші рядки у вигляді списку 
 
-            for line in lines:
-                bez_probiliv = line.strip()
-                time, number = bez_probiliv.split(' ')
-                if float(number) > float(limit):
-                    print(f"Час: {time}, Вимірювання: {number}")
+            for line in lines: #створюємо цикл, який проходиться по отриманому вище списку 
+                bez_probiliv = line.strip() #видаляємо зайві пробіли 
+                time, number = bez_probiliv.split(' ') #розділяємо наш рядок на час і значення 
+                if float(number) > float(limit): #перевіряємо чи значення перевищує наш ліміт 
+                    print(f"Час: {time}, Вимірювання: {number}") #за допомогою f перед лапками ми даємо можливість вивести не лише голий текст, але й змінні 
 
-    except Exception as e:
+    except Exception as e: #додаємо стандартну перевірку на випадок помилок 
         print(f"An error occurred: {e}")
 
 if __name__ == "__main__":
-    limit = input("Введіть мінімальне значення виводу: ")
-    file = "information"
-    main_task(file, limit)
+    limit = input("Введіть мінімальне значення виводу: ") #даємо можливість користувачу ввести ліміт 
+    file = "information" 
+    main_task(file, limit) #виконуємо нашу функцію і отримуємо результат 
+#Примітка 1: Такого в завданні немає, проте ло мінімального значення можна було б зробити перевірку за допомогою while, яка, наприклад, не дозволяла б ввести від'ємні значення 
+#Примітка 2: Не впевнений чи все буде добре з моїм information.txt. Код я писав і перевіряв у PyCharm, де інформація з цього файлу бралась без жодних проблем. З GitHub-ом я знайомий мало
+тому тут я додав цей файл як окремий 
